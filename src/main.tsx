@@ -6,11 +6,14 @@ import './index.css'
 import './styles/ui.css'
 import './styles/layout.css'
 import App from './App.tsx'
+import { LikesProvider } from './context/LikesContext'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <App />
+      <LikesProvider>
+        <App />
+      </LikesProvider>
     </BrowserRouter>
   </StrictMode>,
 )
