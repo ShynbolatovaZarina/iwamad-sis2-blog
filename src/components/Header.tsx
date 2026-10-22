@@ -1,11 +1,14 @@
 import { NavLink } from 'react-router';
 import logo from '../assets/logo.svg';
+import { useAuth } from '../context/AuthContext';
 
 type HeaderProps = {
   title: string;
 };
 
 function Header({ title }: HeaderProps) {
+  const { signedIn } = useAuth();
+
   return (
     <header className="site-header">
       <div className="site-header__brand">
@@ -18,6 +21,8 @@ function Header({ title }: HeaderProps) {
         </NavLink>
         <NavLink to="/posts">Posts</NavLink>
         <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/profile">Profile</NavLink>
+        {!signedIn && <NavLink to="/signin">Sign in</NavLink>}
       </nav>
     </header>
   );
